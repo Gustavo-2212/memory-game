@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Play&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #4158D0;
+    font-family: 'Play', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+}
+
+.memory-game {
+    height: 710px;
+    width: 710px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+}
+
+.card {
+    height: calc(33.333% - 10px);
+    width: calc(25% - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(1, 1, 1, .3);
+    cursor: pointer;
+    transform: scale(1);
+    transform-style: preserve-3d; /* não deixa o elemento achatado no plano */
+    transition: transform .9s ease-in-out;
+}
+
+.card-front,
+.card-back {
+    position: absolute; /*Uma imagem por cima da outra*/
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    background: #cecece;
+    backface-visibility: hidden; /* retira o espelhamento, quando a carta é virada */
+}
+
+.card:active {
+    transform: scale(0.97);
+    transition: transform .3s ease-in-out;
+}
+
+.card-front {
+    transform: rotateY(180deg);
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+.card-back {
+    filter: grayscale(5);
+}
+
